@@ -41,19 +41,19 @@ def id_edit_del_show(text):
     array = operation.read_file()
     logic = True
     for notes in array:
-        if id == Notepad.Note.get_id(notes):
+        if id == notepad.Note.get_id(notes):
             logic = False
             if text == "edit":
                 note = ui.create_note(number)
-                Notepad.Note.set_title(notes, note.get_title())
-                Notepad.Note.set_body(notes, note.get_body())
-                Notepad.Note.set_date(notes)
+                notepad.Note.set_title(notes, note.get_title())
+                notepad.Note.set_body(notes, note.get_body())
+                notepad.Note.set_date(notes)
                 print("Заметка изменена...")
             if text == "del":
                 array.remove(notes)
                 print("Заметка удалена...")
             if text == "show":
-                print(Notepad.Note.map_note(notes))
+                print(notepad.Note.map_note(notes))
     if logic == True:
         print("Такой заметки нет, возможно, вы ввели неверный id")
     operation.write_file(array, "a")
